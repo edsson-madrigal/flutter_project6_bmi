@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 const bottomColor = Color(0xFFEB1555);
 const activeCardColour = Color(0xFF1D1E33);
@@ -25,7 +26,25 @@ class _InputPageState extends State<InputPage> {
             child: Row(
               children: [
                 Expanded(
-                  child: ReusableCard(colour: activeCardColour),
+                  child: ReusableCard(
+                    colour: activeCardColour,
+                    cardChild: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(FontAwesomeIcons.mars, size: 80.0),
+                        SizedBox(
+                          height: 15.0,
+                        ),
+                        Text(
+                          'Male',
+                          style: TextStyle(
+                            fontSize: 18.0,
+                            color: Color(0xff8D8E98),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
                 ),
                 Expanded(
                   child: ReusableCard(colour: activeCardColour),
@@ -62,7 +81,8 @@ class _InputPageState extends State<InputPage> {
 
 class ReusableCard extends StatelessWidget {
   final Color colour;
-  const ReusableCard({required this.colour});
+  final Widget? cardChild; // not required allow nulls
+  const ReusableCard({required this.colour, this.cardChild});
 
   @override
   Widget build(BuildContext context) {
@@ -72,6 +92,7 @@ class ReusableCard extends StatelessWidget {
         color: colour,
         borderRadius: BorderRadius.circular(10.0),
       ),
+      child: cardChild,
     );
   }
 }
