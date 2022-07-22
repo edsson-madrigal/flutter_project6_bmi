@@ -1,6 +1,8 @@
-// ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors, prefer_const_literals_to_create_immutables, prefer_const_constructors_in_immutables
 
 import 'package:flutter/material.dart';
+import 'package:flutter_project6_bmi/icon_content.dart';
+import 'package:flutter_project6_bmi/reusable_cart.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 const bottomColor = Color(0xFFEB1555);
@@ -28,26 +30,15 @@ class _InputPageState extends State<InputPage> {
                 Expanded(
                   child: ReusableCard(
                     colour: activeCardColour,
-                    cardChild: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(FontAwesomeIcons.mars, size: 80.0),
-                        SizedBox(
-                          height: 15.0,
-                        ),
-                        Text(
-                          'Male',
-                          style: TextStyle(
-                            fontSize: 18.0,
-                            color: Color(0xff8D8E98),
-                          ),
-                        )
-                      ],
-                    ),
+                    cardChild:
+                        IconContent(icon: FontAwesomeIcons.mars, label: 'MALE'),
                   ),
                 ),
                 Expanded(
-                  child: ReusableCard(colour: activeCardColour),
+                  child: ReusableCard(
+                      colour: activeCardColour,
+                      cardChild: IconContent(
+                          icon: FontAwesomeIcons.venus, label: 'FEMALE')),
                 ),
               ],
             ),
@@ -75,24 +66,6 @@ class _InputPageState extends State<InputPage> {
           )
         ],
       ),
-    );
-  }
-}
-
-class ReusableCard extends StatelessWidget {
-  final Color colour;
-  final Widget? cardChild; // not required allow nulls
-  const ReusableCard({required this.colour, this.cardChild});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.all(15.0),
-      decoration: BoxDecoration(
-        color: colour,
-        borderRadius: BorderRadius.circular(10.0),
-      ),
-      child: cardChild,
     );
   }
 }
