@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, prefer_const_constructors_in_immutables
 
 import 'package:flutter/material.dart';
 import 'package:flutter_project6_bmi/components/bottom_button.dart';
@@ -6,7 +6,16 @@ import 'package:flutter_project6_bmi/constants.dart';
 import 'package:flutter_project6_bmi/components/reusable_cart.dart';
 
 class ResultsPage extends StatelessWidget {
-  const ResultsPage({Key? key}) : super(key: key);
+  final String bmiResult;
+  final String resultText;
+  final String interpretation;
+
+  ResultsPage(
+      {Key? key,
+      required this.bmiResult,
+      required this.resultText,
+      required this.interpretation})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -36,11 +45,11 @@ class ResultsPage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text(
-                    'Normal',
+                    resultText.toUpperCase(),
                     style: kResultTextStyle,
                   ),
                   Text(
-                    '18.3',
+                    bmiResult,
                     style: kBMITextStyle,
                   ),
                   Padding(
@@ -48,7 +57,7 @@ class ResultsPage extends StatelessWidget {
                       horizontal: 5,
                     ),
                     child: Text(
-                      'Your BMI is quite low, you should eat more!',
+                      interpretation,
                       style: kBodyTextStyle,
                       textAlign: TextAlign.center,
                     ),
