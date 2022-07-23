@@ -6,6 +6,7 @@ import 'package:flutter_project6_bmi/icon_content.dart';
 import 'package:flutter_project6_bmi/reusable_cart.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter_project6_bmi/constants.dart';
+import 'results_page.dart';
 
 enum Gender {
   male,
@@ -233,11 +234,22 @@ class _InputPageState extends State<InputPage> {
               ],
             ),
           ),
-          Container(
-            color: kBottomColor,
-            width: double.infinity,
-            height: 80.0,
-            margin: EdgeInsets.only(top: 10.0),
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ResultsPage(),
+                ),
+              );
+            },
+            child: Container(
+              color: kBottomColor,
+              width: double.infinity,
+              height: 80.0,
+              margin: EdgeInsets.only(top: 10.0),
+              child: Text('CALCULATE'),
+            ),
           )
         ],
       ),
