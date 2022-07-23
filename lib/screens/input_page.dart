@@ -2,11 +2,12 @@
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_project6_bmi/icon_content.dart';
-import 'package:flutter_project6_bmi/reusable_cart.dart';
+import 'package:flutter_project6_bmi/components/icon_content.dart';
+import 'package:flutter_project6_bmi/components/reusable_cart.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter_project6_bmi/constants.dart';
-import 'results_page.dart';
+import 'package:flutter_project6_bmi/components/bottom_button.dart';
+import 'package:flutter_project6_bmi/screens/results_page.dart';
 
 enum Gender {
   male,
@@ -234,7 +235,7 @@ class _InputPageState extends State<InputPage> {
               ],
             ),
           ),
-          GestureDetector(
+          BottomButton(
             onTap: () {
               Navigator.push(
                 context,
@@ -243,14 +244,8 @@ class _InputPageState extends State<InputPage> {
                 ),
               );
             },
-            child: Container(
-              color: kBottomColor,
-              width: double.infinity,
-              height: 80.0,
-              margin: EdgeInsets.only(top: 10.0),
-              child: Text('CALCULATE'),
-            ),
-          )
+            buttonTitle: 'CALCULATE',
+          ),
         ],
       ),
     );
